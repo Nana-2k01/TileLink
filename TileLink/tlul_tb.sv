@@ -40,7 +40,7 @@ module tlul_testbench;
       tl_h2d_main.a_valid = 1'b1;
       tl_h2d_main.a_address = addr;
       tl_h2d_main.a_data = data;
-      tl_h2d_main.a_opcode = write ? 3'b010 : 3'b001; // Write or Read
+      tl_h2d_main.a_opcode = tlul_pkg::tl_a_op_e'(write ? 3'b010 : 3'b001); // FIX: Qualified enum
       tl_h2d_main.a_size = 2'b10; // 4 bytes
       tl_h2d_main.d_ready = 1'b1;
       
@@ -73,7 +73,7 @@ module tlul_testbench;
     // 4. Test Timeout Handling (No Response)
     tl_h2d_main.a_valid = 1'b1;
     tl_h2d_main.a_address = 32'h5000_0000;
-    tl_h2d_main.a_opcode = 3'b001; // Read request
+    tl_h2d_main.a_opcode = tlul_pkg::tl_a_op_e'(3'b001); // FIX: Qualified enum
     #500;
     if (dut.timeout_err)
       $display("[ERROR] Timeout detected as expected!");
@@ -91,3 +91,4 @@ module tlul_testbench;
     $finish;
   end
 endmodule
+

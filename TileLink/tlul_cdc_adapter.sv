@@ -88,7 +88,9 @@ module tlul_cdc_adapter (
   // Backpressure Handling
   always_ff @(posedge clk_peri_i or negedge rst_ni) begin
     if (!rst_ni) backpressure <= 1'b0;
+    `ifdef TL_H2D_PERI_HAS_READY
     else if (!tl_h2d_peri.ready) backpressure <= 1'b1;
+    `endif
     else backpressure <= 1'b0;
   end
 

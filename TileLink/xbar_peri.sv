@@ -1,3 +1,5 @@
+`include "tlul_pkg.sv"
+
 module xbar_peri (
     input  logic        clk_i,
     input  logic        rst_ni,
@@ -10,6 +12,8 @@ module xbar_peri (
     output tlul_pkg::tl_h2d_t  tl_h2d_gpio,
     input  tlul_pkg::tl_d2h_t  tl_d2h_gpio
 );
+
+import tlul_pkg::*;
 
   // TL-UL 1:1 Socket Instantiation
   tlul_socket_1_1 u_tlul_socket_1_1 (

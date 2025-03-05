@@ -196,7 +196,16 @@ module tlul_interconnect_tb(
     .slave_a_source(slave_a_source),
     .slave_a_address(slave_a_address),
     .slave_a_mask(slave_a_mask),
-    .slave_a_data(slave_a_data)
-  );
+    .slave_a_data(slave_a_data),
+    .slave_d_ready(slave_d_ready),
+    .slave_d_valid(slave_d_valid);
+    .slave_d_opcode(slave_d_opcode);
+    .slave_d_param(slave_d_param);
+    .slave_d_size(slave_d_size);
+    .slave_d_source(slave_d_source);
+    .slave_d_sink(slave_d_sink);
+    .slave_d_data(slave_d_data);
+    .slave_d_error(slave_d_error);
+    );
 
 endmodule
